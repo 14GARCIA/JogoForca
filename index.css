@@ -1,0 +1,37 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 50px;
+}
+img{
+    width: 800px;
+    align-items: center;
+}
+
+#exibicaoPalavra{
+    font-size: 3rem;
+    margin-bottom: 30px;
+}
+#mensagem{
+    display: none;
+}
+#botao-reiniciar{
+display: none;
+ background-color: brown; 
+ border: none;
+ color: white;
+ padding: 10px 20px;
+ border-radius: 5px;
+}
+
+#botao-reiniciar :hover{
+background-color: rgb(100, 25, 25);
+}
+
+#letras-chutadas{
+    font-size: 2rem;
+    color: blue;
+    font-weight: bold;
+    margin-bottom: 20px;
+
+}
