@@ -1,131 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo da Forca</title>
-    <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
-<!-- TOPO -->
-<h1>Jogo da Forca</h1>
-<img id="imagem" src="img/1.png" />
-<div id="exibicaoPalavra">_ _ _</div>
-<input type="text" id="letra" placeholder="Digite uma letra" maxlength="1">
-<button id="btn-chutar" onclick="chutarLetra()">Tentar</button>
 
-<!-- BAIXO -->
-<div class="container">
-    <h2>Dica:</h2>
-    <p id="dica"></p>
-</div>
+    <div id="tela-inicial">
+        <h2>Bem-vindo ao desafio da segurança digital</h2>
+        <p>Seu objetivo é descobrir as palavras relacionadas à proteção online antes que o boneco seja enforcado. Cada
+            erro te deixa mais perto do perigo!</p>
+        <button id="btn-proximo">Próximo</button>
+    </div>
 
-<h2>Tentativas passadas</h2>
-<div id="letras-chutadas"></div>
-<div id="mensagem"></div>
 
-<button id="botao-reiniciar" onclick="iniciarJogo()" style="display:none;">Tentar novamente</button>
-<button id="botao-Fase-nova" onclick="passarDeFase()" style="display:none;">Próxima fase</button>
+    <div id="tela-nivel" style="display: none;">
+        <h2>ESCOLHA A DIFICULDADE</h2>
+        <p>Selecione o nível de desafio e mostre que você sabe se proteger no mundo digital!</p>
+        <div id="nivel">
+            <button onclick="facil()">Fácil</button>
+            <button onclick="medio()">Médio</button>
+            <button onclick="dificil()">Difícil</button>
+        </div>
+    </div>
 
-<script>
-const palavrasFaceis = ["Spam", "WI-FI", "Senha", "Cookie", "Cadeado"];
-const dicasFaceis = [
-    "E-mails indesejados e frequentemente perigosos.",
-    "Rede sem criptografia, perigosa para conexões públicas.",
-    "Cadeia de caracteres usada para autenticação.",
-    "Arquivo que armazena dados de navegação.",
-    "Símbolo de site seguro no navegador."
-];
+    <script>
 
-let palavraEscolhida;
-let dicaEscolhida;
-let exibicaoPalavra;
-let letrasChutadas;
-let tentativasRestantes;
-let numeroDeErros;
+        document.getElementById("btn-proximo").addEventListener("click", function () {
+            document.getElementById("tela-inicial").style.display = "none";
+            document.getElementById("tela-nivel").style.display = "block";
+        });
 
-function iniciarJogo() {
-    let index = Math.floor(Math.random() * palavrasFaceis.length);
-    palavraEscolhida = palavrasFaceis[index].toUpperCase();
-    dicaEscolhida = dicasFaceis[index];
 
-    exibicaoPalavra = palavraEscolhida.split('').map(letra => (letra.match(/[A-ZÀ-ÚÇ-]/) ? "_" : letra));
-
-    letrasChutadas = [];
-    tentativasRestantes = 7;
-    numeroDeErros = 1;
-
-    document.getElementById("letra").disabled = false;
-    document.getElementById("mensagem").innerText = "";
-    document.getElementById("botao-reiniciar").style.display = "none";
-    document.getElementById("botao-Fase-nova").style.display = "none";
-    
-    atualizarExibicao();
-}
-
-document.getElementById("letra").addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-        chutarLetra();
-    }
-});
-
-function atualizarExibicao() {
-    document.getElementById("exibicaoPalavra").innerText = exibicaoPalavra.join(' ');
-    document.getElementById("letras-chutadas").innerText = letrasChutadas.join(', ');
-    document.getElementById("dica").innerText = dicaEscolhida;
-    document.getElementById("imagem").src = `img/${numeroDeErros}.png`;
-
-    if (tentativasRestantes === 0) {
-        encerrarJogo("Você perdeu! 😢", "botao-reiniciar");
-    } else if (!exibicaoPalavra.includes('_')) {
-        encerrarJogo("Parabéns! 🎉 Você passou de fase!", "botao-Fase-nova");
-    }
-}
-
-function chutarLetra() {
-    const entradaLetra = document.getElementById('letra');
-    const letra = entradaLetra.value.toUpperCase().trim();
-
-    if (!letra.match(/^[A-ZÀ-ÚÇ-]$/)) {
-        alert("Digite uma letra válida.");
-        return;
-    }
-
-    if (letrasChutadas.includes(letra)) {
-        alert("Você já tentou esta letra, digite outra.");
-        return;
-    }
-
-    letrasChutadas.push(letra);
-
-    if (palavraEscolhida.includes(letra)) {
-        for (let i = 0; i < palavraEscolhida.length; i++) {
-            if (palavraEscolhida[i] === letra) {
-                exibicaoPalavra[i] = letra;
-            }
+        function facil() {
+            window.location.href = "faseFacil.html";
         }
-    } else {
-        tentativasRestantes--;
-        numeroDeErros++;
-    }
 
-    entradaLetra.value = "";
-    atualizarExibicao();
-}
+        function medio() {
+            window.location.href = "faseMedia.html";
+        }
 
-function encerrarJogo(mensagem, botaoMostrar) {
-    document.getElementById("letra").disabled = true;
-    document.getElementById("mensagem").innerText = mensagem;
-    document.getElementById(botaoMostrar).style.display = "block";
-}
-
-function passarDeFase() {
-    alert("Parabéns! Você avançou para a próxima fase!");
-    window.location.href = "faseMedia.html";
-   
-}
-
-window.onload = iniciarJogo;
-</script>
+        function dificil() {
+            window.location.href = "faseDificil.html";
+        }
+    </script>
 </body>
+
 </html>

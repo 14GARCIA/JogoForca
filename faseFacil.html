@@ -29,13 +29,16 @@
     <button id="botao-reiniciar" onclick="iniciarJogo()" style="display:none;">Tentar novamente</button>
 
     <script>
-        const palavrasMedias = ["Spyware", "Antivírus", "Autenticação", "Criptografia", "Firewall"];
-        const dicasMedias = [
-            "Tipo de software que espiona o usuário sem permissão.",
-            "Programa que detecta e remove vírus.",
-            "Método que exige dois passos para fazer login.",
-            "Técnica que transforma informações em códigos secretos.",
-            "Programa que bloqueia acessos não autorizados a uma rede."
+        function voltar(){
+            window.location.href ="index.html"
+        }
+        const palavrasFaceis = ["HTTPS", "Phishing", "DDoS", "Trojan", "Spam"];
+        const dicasFaceis = [
+            "Protocolo seguro para sites na web.",
+            "Golpe onde criminosos se passam por empresas para roubar dados.",
+            "Ataque que sobrecarrega um site com acessos.",
+            "Malware que se disfarça de programa legítimo.",
+            "E-mails indesejados enviados em massa."
         ];
 
         let palavraEscolhida;
@@ -48,13 +51,14 @@
         let tentativasNaFase = 0; 
 
         function iniciarJogo() {
-            if (palavrasMedias.length === 0) {
+            if (palavrasFaceis.length === 0) {
                 alert("Você completou todas as fases! 🎉");
                 return;
             }
 
             if (tentativasNaFase >= 3) {
-                if (faseAtual < palavrasMedias.length - 1) {
+                
+                if (faseAtual < palavrasFaceis.length - 1) {
                     faseAtual++;
                     tentativasNaFase = 0; 
                     alert("Parabéns! Você avançou para a próxima fase!");
@@ -64,10 +68,9 @@
                 }
             }
 
-            let index = Math.floor(Math.random() * palavrasMedias.length); 
-            palavraEscolhida = palavrasMedias.splice(index, 1)[0].toUpperCase(); 
-            dicaEscolhida = dicasMedias.splice(index, 1)[0];
-
+            let index = Math.floor(Math.random() * palavrasFaceis.length); 
+            palavraEscolhida = palavrasFaceis.splice(index, 1)[0].toUpperCase(); 
+            dicaEscolhida = dicasFaceis.splice(index, 1)[0];
             exibicaoPalavra = palavraEscolhida.split('').map(letra => (letra.match(/[A-ZÀ-ÚÇ-]/) ? "_" : letra));
 
             letrasChutadas = [];
@@ -99,7 +102,7 @@
                 tentativasNaFase++;
                 if (tentativasNaFase < 3) {
                     alert("Você passou de fase! Tente novamente para melhorar.");
-                    iniciarJogo();
+                    iniciarJogo(); 
                 } else {
                     alert("Parabéns! Você passou para a próxima fase!");
                     voltar();
@@ -144,12 +147,9 @@
             document.getElementById(botaoMostrar).style.display = "block";
         }
 
-        function voltar() {
-            window.location.href = "index.html";
-        }
-
         window.onload = iniciarJogo;
     </script>
 </body>
 
 </html>
+x   
