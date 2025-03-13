@@ -33,13 +33,13 @@
     <button id="botao-Fase-nova" onclick="passarDeFase()" style="display:none;">Próxima fase</button>
 
     <script>
-        const palavrasDificeis = ["Cookies", "Atualização", "VPN", "Oficiais", "Engenharia"];
+        const palavrasDificeis = ["Ransomware", "Deepfake", "Exploit", "Backdoor", "Rootkit"];
         const dicasDificeis = [
-            "Pequenos arquivos que armazenam dados sobre sua navegação.",
-            "Prática essencial para corrigir falhas de segurança no sistema.",
-            "Tecnologia usada para criar uma conexão segura e privada.",
-            "Lojas recomendadas para baixar aplicativos com segurança.",
-            "Técnica usada por criminosos para enganar pessoas e obter dados."
+            "Tipo de malware que sequestra arquivos e exige resgate.",
+            "Vídeo manipulado digitalmente para enganar pessoas.",
+            "Código que explora falhas de segurança em sistemas.",
+            "Acesso oculto e não autorizado a um sistema.",
+            "Conjunto de ferramentas usadas para esconder malware."
         ];
 
         let palavraEscolhida;
@@ -150,15 +150,15 @@
         }
 
         function voltar() {
-            window.location.href = "index.html";
+            window.location.href = "jogo.html";
         }
 
         window.onload = iniciarJogo;
-                 const canvas = document.getElementById("matrix");
+        const canvas = document.getElementById("matrix");
         const ctx = canvas.getContext("2d");
 
         canvas.width = window.innerWidth;
-        canvas.height = 2 * window.innerHeight;  // Dupla altura do canvas para rolar
+        canvas.height = window.innerHeight;
 
         const fontSize = 16;
         const columns = canvas.width / fontSize;
@@ -169,7 +169,7 @@
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             ctx.fillStyle = "#0f0"; // Cor verde neon
-            ctx.font = `${fontSize}px 'Press Start 2P', monospace`;  // Aplica a fonte Press Start 2P
+            ctx.font = fontSize + "px monospace";
 
             for (let i = 0; i < drops.length; i++) {
                 const text = Math.random() > 0.5 ? "1" : "0";
@@ -190,7 +190,7 @@
 
         window.addEventListener("resize", () => {
             canvas.width = window.innerWidth;
-            canvas.height = 2 * window.innerHeight;  // Ajusta o canvas ao redimensionar a tela
+            canvas.height = window.innerHeight;
             drops.fill(1);
         });
     </script>

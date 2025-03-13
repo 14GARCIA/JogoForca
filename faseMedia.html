@@ -149,7 +149,7 @@
         }
 
         function voltar() {
-            window.location.href = "index.html";
+            window.location.href = "jogo.html";
         }
 
         window.onload = iniciarJogo;
@@ -157,7 +157,7 @@
         const ctx = canvas.getContext("2d");
 
         canvas.width = window.innerWidth;
-        canvas.height = 2 * window.innerHeight;  // Dupla altura do canvas para rolar
+        canvas.height = window.innerHeight;
 
         const fontSize = 16;
         const columns = canvas.width / fontSize;
@@ -168,7 +168,7 @@
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             ctx.fillStyle = "#0f0"; // Cor verde neon
-            ctx.font = `${fontSize}px 'Press Start 2P', monospace`;  // Aplica a fonte Press Start 2P
+            ctx.font = fontSize + "px monospace";
 
             for (let i = 0; i < drops.length; i++) {
                 const text = Math.random() > 0.5 ? "1" : "0";
@@ -189,9 +189,11 @@
 
         window.addEventListener("resize", () => {
             canvas.width = window.innerWidth;
-            canvas.height = 2 * window.innerHeight;  // Ajusta o canvas ao redimensionar a tela
+            canvas.height = window.innerHeight;
             drops.fill(1);
         });
+
+
     </script>
 </body>
 

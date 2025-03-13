@@ -18,23 +18,31 @@ img{
 
 #exibicaoPalavra{
     font-size: 3rem;
+    color: white;
     margin-bottom: 30px;
+    font-family: "Press Start 2P";
+    margin-top: 7%;
 }
-#mensagem{
-    
-}
-#botao-reiniciar{
+
+#botao-reiniciar {
 display: none;
- background-color: brown; 
+ background-color: rgb(255, 0, 0); 
  border: none;
  color: white;
  padding: 10px 20px;
  border-radius: 5px;
+ font-family: "Press Start 2P";
+    text-align: center;
 }
 
 #botao-reiniciar :hover{
 background-color: rgb(100, 25, 25);
 }
+#botao-reiniciar button{
+    text-align: center;
+    width: 70PX;
+}
+
 
 #letras-chutadas{
     font-size: 2rem;
@@ -106,8 +114,7 @@ h2{
 }
 #letras-chutadas{
     color: red;
-    margin-top: 5
-    2%;
+    margin-top: 5%c;
 }
 #letra{
     background-color: #000;
@@ -146,4 +153,7 @@ canvas {
     width: 100%;
     height: 100%;
     z-index: -1; /* Joga o efeito para o fundo */
+}
+.centralizar{
+    text-align: center;
 }

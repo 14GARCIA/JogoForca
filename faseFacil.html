@@ -16,24 +16,22 @@
       <div id="exibicaoPalavra">_ _ _</div>
       <input type="text" id="letra" placeholder="Digite uma letra" maxlength="1">
       <button id="btn-chutar" onclick="chutarLetra()">Tentar</button>
-  
-      <!-- BAIXO -->
+      
       <div class="container">
-          <h2>Dica:<img src="https://images.vexels.com/media/users/3/306179/isolated/preview/780089af55d580de3617300ded9f0ab2-icone-de-lampada-classica.png"/></h2>
-        <div class="espaco"> <p id="dica"></p></div>
-          <div id="mensagem"></div>
-      </div>
-  
-      <h2>Tentativas passadas</h2>
-      <div id="letras-chutadas"></div>
-     
-  
-      <button id="botao-reiniciar" onclick="iniciarJogo()" style="display:none;">Tentar novamente</button>
-      <button id="botao-Fase-nova" onclick="passarDeFase()" style="display:none;">Próxima fase</button>
-  
+        <h2>Dica:<img src="https://images.vexels.com/media/users/3/306179/isolated/preview/780089af55d580de3617300ded9f0ab2-icone-de-lampada-classica.png"/></h2>
+      <div class="espaco">  <p id="dica"></p></div>
+        <div id="mensagem"></div>
+    </div>
+
+    <h2>Tentativas passadas</h2>
+    <div id="letras-chutadas"></div>
+   
+    <div class="centralizar">
+    <button id="botao-reiniciar" onclick="iniciarJogo()" style="display:none;">Tentar novamente</button>
+</div>
     <script>
         function voltar(){
-            window.location.href ="index.html"
+            window.location.href ="jogo.html"
         }
         const palavrasFaceis = ["HTTPS", "Phishing", "DDoS", "Trojan", "Spam"];
         const dicasFaceis = [
@@ -155,7 +153,7 @@
         const ctx = canvas.getContext("2d");
 
         canvas.width = window.innerWidth;
-        canvas.height = 2 * window.innerHeight;  // Dupla altura do canvas para rolar
+        canvas.height = window.innerHeight;
 
         const fontSize = 16;
         const columns = canvas.width / fontSize;
@@ -166,7 +164,7 @@
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             ctx.fillStyle = "#0f0"; // Cor verde neon
-            ctx.font = `${fontSize}px 'Press Start 2P', monospace`;  // Aplica a fonte Press Start 2P
+            ctx.font = fontSize + "px monospace";
 
             for (let i = 0; i < drops.length; i++) {
                 const text = Math.random() > 0.5 ? "1" : "0";
@@ -187,9 +185,11 @@
 
         window.addEventListener("resize", () => {
             canvas.width = window.innerWidth;
-            canvas.height = 2 * window.innerHeight;  // Ajusta o canvas ao redimensionar a tela
+            canvas.height = window.innerHeight;
             drops.fill(1);
         });
+
+
     </script>
 </body>
 
