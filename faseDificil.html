@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="fases.css">
 </head>
 
-<body>
+<body> 
+       <canvas id="matrix"></canvas>
+
     <!-- TOPO -->
-    <h1>Jogo da Forca</h1>
+    <h1>Gallows <br> <span>Security</span></h1>
     <img id="imagem" src="img/1.png" />
     <div id="exibicaoPalavra">_ _ _</div>
     <input type="text" id="letra" placeholder="Digite uma letra" maxlength="1">
@@ -19,7 +21,7 @@
     <!-- BAIXO -->
     <div class="container">
         <h2>Dica:<img src="https://images.vexels.com/media/users/3/306179/isolated/preview/780089af55d580de3617300ded9f0ab2-icone-de-lampada-classica.png"/></h2>
-        <p id="dica"></p>
+      <div class="espaco">  <p id="dica"></p></div>
         <div id="mensagem"></div>
     </div>
 
@@ -152,6 +154,45 @@
         }
 
         window.onload = iniciarJogo;
+                 const canvas = document.getElementById("matrix");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = 2 * window.innerHeight;  // Dupla altura do canvas para rolar
+
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawMatrixRain() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "#0f0"; // Cor verde neon
+            ctx.font = `${fontSize}px 'Press Start 2P', monospace`;  // Aplica a fonte Press Start 2P
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = Math.random() > 0.5 ? "1" : "0";
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
+
+                ctx.fillText(text, x, y);
+
+                if (y > canvas.height && Math.random() > 0.95) {
+                    drops[i] = 0;
+                }
+
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrixRain, 50);
+
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = 2 * window.innerHeight;  // Ajusta o canvas ao redimensionar a tela
+            drops.fill(1);
+        });
     </script>
 </body>
 
