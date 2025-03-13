@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo da Forca</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="fases.css">
 </head>
 
 <body>
@@ -18,13 +18,14 @@
 
     <!-- BAIXO -->
     <div class="container">
-        <h2>Dica:</h2>
+        <h2>Dica:<img src="https://images.vexels.com/media/users/3/306179/isolated/preview/780089af55d580de3617300ded9f0ab2-icone-de-lampada-classica.png"/></h2>
         <p id="dica"></p>
+        <div id="mensagem"></div>
     </div>
 
     <h2>Tentativas passadas</h2>
     <div id="letras-chutadas"></div>
-    <div id="mensagem"></div>
+   
 
     <button id="botao-reiniciar" onclick="iniciarJogo()" style="display:none;">Tentar novamente</button>
     <button id="botao-Fase-nova" onclick="passarDeFase()" style="display:none;">Próxima fase</button>
@@ -100,7 +101,7 @@
             } else if (!exibicaoPalavra.includes('_')) {
                 tentativasNaFase++;
                 if (tentativasNaFase < 3) {
-                    alert("Você passou de fase! Tente novamente para melhorar.");
+                    alert("Você passou de fase! Continue para melhorar.");
                     iniciarJogo();
                 } else {
                     alert("Parabéns! Você passou para a próxima fase!");

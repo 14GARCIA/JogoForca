@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
 body{
-    font-family: Arial, Helvetica, sans-serif;
+    
     text-align: center;
     margin: 50px;
+    
 }
 img{
     width: 800px;
@@ -13,7 +17,7 @@ img{
     margin-bottom: 30px;
 }
 #mensagem{
-    display: none;
+    
 }
 #botao-reiniciar{
 display: none;
@@ -33,5 +37,14 @@ background-color: rgb(100, 25, 25);
     color: blue;
     font-weight: bold;
     margin-bottom: 20px;
+    font-family: 'press start 2p', cursive;
+
+}
+
+
+.container{
+    img{
+        width: 30px;
+    }
 
 }
